@@ -165,7 +165,7 @@ void juego(char **p,char **enemigo,char **posienemigo,vida vbarcos,vida venemigo
 	}
 	fflush(stdin);
 }
-
+//	===================================
 //	Funcion Atacar posiciones de Barcos
 void atacar(char **p,char **pos,vida barcos,vida enemigo){
 	int i,x=0,y=0;
@@ -212,6 +212,8 @@ void ingresar(char **p,int i){
 	system("cls");
 	p[y][x]='A'+i;
 }
+//	=====================================================
+//	funcion muestra mensaje si destruye la flota completa
 void msj_ganador(){
 	int i;
 	system("cls");
