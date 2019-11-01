@@ -90,11 +90,11 @@ void jugar(char **a,char **b,char **ta,char **tb,vida jugador2,vida jugador1){
 //	Funcion Imprimir Tablero del Juego
 void tablero(char **p){
 	int i,j;
-	for(i = 0; i <= 20; i++)p[0][i];
-	for(i = 0; i <= 20;i++)p[i][0];
-	for(i = 0; i <= 20;i++){
+	for(i = 1; i <= 20; i++)p[0][i];
+	for(i = 1; i <= 20;i++)p[i][0];
+	for(i = 1; i <= 20;i++){
 		printf("\n\t\t\t\t");
-		for(j = 0; j <= 20;j++)
+		for(j = 1; j <= 20;j++)
 			printf(" %c",p[i][j]);
 	}
 }
@@ -102,19 +102,20 @@ char** inicio(){
 	char **p=NULL;
 	int i,j;
 	
-	p=(char**)malloc(20*sizeof(char*));
-	for(i = 0; i <= 20; i++)
+	p=(char**)malloc
+	(20*sizeof(char*));
+	for(i = 1; i <= 20; i++)
 		p[i]=(char*)malloc(20*sizeof(char));
 		
-	for(j = 0; j <= 20; j++)
-		for(i = 0; i <= 20;i++)
+	for(j = 1; j <= 20; j++)
+		for(i = 1; i <= 20;i++)
 			p[j][i]='_';	
 			
 	return p;
 }
 void liberar(char **p){
 	int i;
-	for(i=0;i<=20;i++)free(p[i]);
+	for(i=1;i<=20;i++)free(p[i]);
 	free(p);
 }
 //	=================================================
@@ -133,7 +134,7 @@ void turno(int i){
 		Sleep(60*30);
 		
 	}
-	for(i=0;i<20;i++)putchar('\n');
+	for(i=1;i<20;i++)putchar('\n');
 	
 	system("cls");	
 }
@@ -141,9 +142,9 @@ void turno(int i){
 vida cont_vidas(char **p){
 	int i,j;
 	vida cont = 0;
-	for(i = 0; i < 20; i++)
-		for(j = 0; j < 20;j++){
-			if(p[i][j]>='A' && p[i][j]<='K')
+	for(i = 1; i < 20; i++)
+		for(j = 1; j < 20;j++){
+			if(p[i][j]>='1' && p[i][j]<='5')
 			cont++;
 		}
 	return cont;
@@ -185,7 +186,7 @@ void atacar(char **p,char **pos,vida barcos,vida enemigo){
 			
 		}while(pos[y][x]=='#' || pos[y][x]=='-');
 		
-		if(pos[y][x]>='A' && pos[y][x]<='K'){
+		if(pos[y][x]>='1' && pos[y][x]<='5'){
 			enemigo--;
 			pos[y][x]=p[y][x]='#';
 			printf("\a");
@@ -207,10 +208,10 @@ void ingresar(char **p,int i){
 		printf("\t\t\ty: ");
 		scanf("%d",&y);
 		
-	}while(p[y][x]>='A' && p[y][x]<='K');
+	}while(p[y][x]>='1' && p[y][x]<='5');
 	
 	system("cls");
-	p[y][x]='A'+i;
+	p[y][x]='1'+i;
 }
 //	=====================================================
 //	funcion muestra mensaje si destruye la flota completa
@@ -225,6 +226,10 @@ void msj_ganador(){
 		putchar(cad[i]);
 		Sleep(30);
 	}
+	printf("\n\t Jugador 1");
+	tablero(a);
+	printf("\n\n\n\n\n\n\n\n\t\t Jugador 2");
+	tablero(b);
 	Sleep(60*60);
 	printf("\n\n\t\t    <ENTER>");
 	getchar();
