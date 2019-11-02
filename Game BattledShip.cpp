@@ -15,7 +15,7 @@ using namespace std;
 //	Variables Globales 
 typedef int vida;
 int op, x, y, i;
-char **a=NULL,**b=NULL,**ta=NULL,**tb=NULL;
+char **a = NULL,**b = NULL, **ta = NULL, **tb = NULL;
 vida jugador2 = 5, jugador1 = 5;
 //	=======================
 // 	LLamada a las Funciones
@@ -25,15 +25,15 @@ void liberar(char **p);
 void tablero(char **p);
 void turno(int i);
 void msj_ganador();
-vida cont_vidas(char **p);
 void ingresar(char **p,int i);
 void atacar(char **p,char **pos,vida barcos,vida enemigo);
 void juego(char **p,char **enemigo,char **posienemigo,vida vbarcos,vida venemigo);
 void jugar(char **a,char **b,char **ta,char **tb,vida jugador2,vida jugador1);
 void PrintBarco();
+vida cont_vidas(char **p);
 
 //	=======================================
-//	Menu Principal llama a la funcion Jugar 
+//	Menu Principal llamar a la funcion Jugar 
 int main(){
 	PrintBarco();
 	cin >> op;
@@ -98,11 +98,13 @@ void tablero(char **p){
 			printf(" %c",p[i][j]);
 	}
 }
+//	===================================================
+//	variable tipo apuntador asigna un bloque de memoria
 char** inicio(){
-	char **p=NULL;
+	char **p = NULL;
 	int i,j;
 	
-	p=(char**)malloc
+	p = (char**)malloc
 	(20*sizeof(char*));
 	for(i = 1; i <= 20; i++)
 		p[i]=(char*)malloc(20*sizeof(char));
@@ -113,9 +115,10 @@ char** inicio(){
 			
 	return p;
 }
+//	el bloque de memoria especifica
 void liberar(char **p){
 	int i;
-	for(i=1;i<=20;i++)free(p[i]);
+	for(i = 1; i <= 20; i++)free(p[i]);
 	free(p);
 }
 //	=================================================
@@ -134,7 +137,7 @@ void turno(int i){
 		Sleep(60*30);
 		
 	}
-	for(i=1;i<20;i++)putchar('\n');
+	for(i = 1; i < 20; i++)putchar('\n');
 	
 	system("cls");	
 }
@@ -202,7 +205,7 @@ void ingresar(char **p,int i){
 	int x=0,y=0;
 	printf("\n\t\t\t Ingresa las cordenadas de tu barco %d\n",i+1);
 	do{
-		if(x!=0)printf("\n\t\t\t\tYA EXISTE ESTE BARCO!!\n");
+		if(x!=0)printf("\n\t\t\t\t Coordenada ya fue registrada!!\n");
 		printf("\t\t\tx: ");
 		scanf("%d",&x);
 		printf("\t\t\ty: ");
@@ -218,7 +221,7 @@ void ingresar(char **p,int i){
 void msj_ganador(){
 	int i;
 	system("cls");
-	system("color fd");
+	system("color 07");
 	printf("\n\n\n\n\n\n\n\n\t\t    ");
 	Sleep(60*10);
 	char cad[]={"Has Destruido la Flota Enemiga"};
@@ -258,4 +261,3 @@ void PrintBarco(){
 	cout << "\t 1. Jugar" << endl;
 	cout << "\t 2. Salir " << endl;
 
-}
